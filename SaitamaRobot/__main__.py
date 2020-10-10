@@ -59,7 +59,7 @@ You can find my list of available commands with /help.
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I help admins manage their groups with Bunny Girl Charm!
+I help admins manage their groups with Bunny Girl Charm! 
 
 *Main* commands available:
  • /help: PM's you this message.
@@ -188,7 +188,7 @@ def start(update: Update, context: CallbackContext):
                 reply_markup=InlineKeyboardMarkup(
                     [[
                         InlineKeyboardButton(
-                            text="☑️ Add Mai Sakurajima to your group",
+                            text="☑️ Add Saitama to your group",
                             url="t.me/{}?startgroup=true".format(
                                 context.bot.username))
                     ],
@@ -202,7 +202,7 @@ def start(update: Update, context: CallbackContext):
                      ],
                      [
                          InlineKeyboardButton(
-                             text="Wanna know me more? Click Here",
+                             text="Wanna know who I am? Click Here",
                              url="https://t.me/bunny_girl_senpai_sub")
                      ],
                      [
