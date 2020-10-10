@@ -10,7 +10,7 @@ from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.alternate import typing_action
 
 
-@userge.on_cmd("grs", about={
+@mai_sakurajima_robot.on_cmd("grs", about={
     'header': "Google Reverse Search",
     'description': "Reverse Search any Image/Gif",
     'usage': "{tr}grs [Reply to image | gif]"})
