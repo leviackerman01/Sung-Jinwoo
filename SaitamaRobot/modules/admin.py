@@ -340,11 +340,11 @@ def adminlist(update: Update, context: CallbackContext):
     administrators = bot.getChatAdministrators(chat_id)
 
     if update_chat_title == message_chat_title:
-        chat_name = "this chat"
+        chat_name = update_chat_title
     else:
         chat_name = update_chat_title
 
-    text = f"Admins in *{chat_name}*:"
+    text = f"Admins in <b>{chat_name}</b>:"
 
     for admin in administrators:
         user = admin.user
