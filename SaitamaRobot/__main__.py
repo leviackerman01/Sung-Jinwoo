@@ -52,8 +52,7 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hi {}, my name is {}! 
-I am an Anime themed group management bot.
-You can find my list of available commands with /help.
+I am an Anime themed group management bot.You can find my list of available commands with /help.
 """
 
 HELP_STRINGS = """
@@ -193,15 +192,15 @@ def start(update: Update, context: CallbackContext):
                     ],
                      [
                          InlineKeyboardButton(
-                             text="🚑 Support Group",
+                             text="🚨 Support 🚨",
                              url=f"https://t.me/{SUPPORT_CHAT}"),
                          InlineKeyboardButton(
-                             text="🗄 Source",
+                             text="🔗 Source 🔗",
                              url="https://github.com/Raki-12/Mai-Sakurajima")
                      ],
                      [
                          InlineKeyboardButton(
-                             text="🥺 Wanna know who I am?",
+                             text="🥰 Wanna know who I am? 🥰",
                              url="https://t.me/bunny_girl_senpai_sub")
                     ]]))
                   
