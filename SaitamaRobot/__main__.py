@@ -197,19 +197,16 @@ def start(update: Update, context: CallbackContext):
                              text="🚑 Support Group",
                              url=f"https://t.me/{SUPPORT_CHAT}"),
                          InlineKeyboardButton(
-                             text="🔔 Updates Channel",
-                             url="https://t.me/OnePunchUpdates")
+                             text="🗄 Source",
+                             url="https://github.com/Raki-12/Mai-Sakurajima"
                      ],
                      [
                          InlineKeyboardButton(
-                             text="Wanna know who I am? Click Here",
+                             text="🥺 Wanna know who I am?",
                              url="https://t.me/bunny_girl_senpai_sub")
-                     ],
-                     [
-                         InlineKeyboardButton(
-                             text="🗄 Source code",
-                             url="https://github.com/Raki-12/Mai-Sakurajima")
                      ]]))
+                  
+                    
     else:
         update.effective_message.reply_text(
             "I'm online!\n<b>Up since:</b> <code>{}</code>".format(uptime),
