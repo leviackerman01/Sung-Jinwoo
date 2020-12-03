@@ -386,11 +386,11 @@ __help__ = """
 
 BAN_HANDLER = CommandHandler("ban", ban)
 TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban)
-PUNCH_HANDLER = CommandHandler("punch", "kick", punch)
+PUNCH_HANDLER = CommandHandler("punch", punch)
 UNBAN_HANDLER = CommandHandler("unban", unban)
 ROAR_HANDLER = CommandHandler("roar", selfunban)
 PUNCHME_HANDLER = DisableAbleCommandHandler(
-    "punchme", "kickme", punchme, filters=Filters.group)
+    "punchme", punchme, filters=Filters.group)
 
 dispatcher.add_handler(BAN_HANDLER)
 dispatcher.add_handler(TEMPBAN_HANDLER)
