@@ -273,7 +273,7 @@ def punchme(update: Update, context: CallbackContext):
     res = update.effective_chat.unban_member(
         user_id)  # unban on current user = kick
     if res:
-        update.effective_message.reply_text("*punches you out of the group*")
+        update.effective_message.reply_text("*removes you out of the group*")
     else:
         update.effective_message.reply_text("Huh? I can't :/")
 
@@ -375,12 +375,14 @@ def selfunban(context: CallbackContext, update: Update) -> str:
 
 
 __help__ = """
+ • `/kickme`*:* kicks the user who issued the command
  • `/punchme`*:* punchs the user who issued the command
 
 *Admins only:*
  • `/ban <userhandle>`*:* bans a user. (via handle, or reply)
  • `/tban <userhandle> x(m/h/d)`*:* bans a user for `x` time. (via handle, or reply). `m` = `minutes`, `h` = `hours`, `d` = `days`.
  • `/unban <userhandle>`*:* unbans a user. (via handle, or reply)
+ • `/kick <userhandle>`*:* Kicks a user out of the group, (via handle, or reply)
  • `/punch <userhandle>`*:* Punches a user out of the group, (via handle, or reply)
 """
 
