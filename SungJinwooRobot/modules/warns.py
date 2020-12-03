@@ -183,6 +183,35 @@ def warn_user(update: Update, context: CallbackContext) -> str:
         message.reply_text("That looks like an invalid User ID to me.")
     return ""
 
+@run_async
+@user_admin
+@bot_admin
+def rmwarn_cmd(update: Update, context: CallbackContext) -> str:
+    args = context.args
+    message: Optional[Message] = update.effective_message
+    chat: Optional[Chat] = update.effective_chat
+
+    user_id = extract_user(message, args)
+
+    if user_id:
+        warns = sql.get_warns(user_id, chat.id)
+        if warns and warns[0] !=0:
+            num_warns, reasons = warns
+            limit, soft_warn = sql.get_warn_setting(chat.id)
+            keyboard = InlineKeyboardMarkup([[
+                InlineKeyboardButton(
+                  "Remove warn", callback_data="rm_wamr({})".format(user_id)
+            ]])
+            reply_text = f"This user has {num_warns}/{limit} warns."
+            try:
+                message.reply_text(reply_text, reply_markup=keyboard)
+            except BadRequest as err:
+                message.reply_text(
+                  reply_text, reply_markup=keyboard, quote=False)
+        else:
+            message.reply_text("This user doesn't have any warns.")
+    else:
+        message.reply_text("No user has been mentioned.")
 
 @run_async
 @user_admin
@@ -466,6 +495,7 @@ __help__ = """
 *Admins only:*
  • `/warn <userhandle>`*:* warn a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
  • `/resetwarn <userhandle>`*:* reset the warns for a user. Can also be used as a reply.
+ • `/rmwarn `*:* now you can remove last warn. No need reset.
  • `/addwarn <keyword> <reply message>`*:* set a warning filter on a certain keyword. If you want your keyword to \
 be a sentence, encompass it with quotes, as such: `/addwarn "very angry" This is an angry user`. 
  • `/nowarn <keyword>`*:* stop a warning filter
