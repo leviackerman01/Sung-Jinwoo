@@ -514,6 +514,8 @@ MYWARNS_HANDLER = DisableAbleCommandHandler(
     "warns", warns, filters=Filters.group)
 ADD_WARN_HANDLER = CommandHandler(
     "addwarn", add_warn_filter, filters=Filters.group)
+REMOVE_WARN_HANDLER = CommandHandler(
+    "rmwarn", rmwarn_cmd, filters=Filters.group)
 RM_WARN_HANDLER = CommandHandler(["nowarn", "stopwarn"],
                                  remove_warn_filter,
                                  filters=Filters.group)
@@ -531,6 +533,7 @@ WARN_STRENGTH_HANDLER = CommandHandler(
 dispatcher.add_handler(WARN_HANDLER)
 dispatcher.add_handler(CALLBACK_QUERY_HANDLER)
 dispatcher.add_handler(RESET_WARN_HANDLER)
+dispatcher.add_handler(REMOVE_WARN_HANDLER)
 dispatcher.add_handler(MYWARNS_HANDLER)
 dispatcher.add_handler(ADD_WARN_HANDLER)
 dispatcher.add_handler(RM_WARN_HANDLER)
