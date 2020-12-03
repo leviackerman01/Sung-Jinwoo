@@ -1,24 +1,21 @@
-![Mai Sakurajima](https://telegra.ph/file/6f6b30a25e1c6558f01a1.jpg)
-# Mai Sakurajima Robot 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6141417ceaf84545bab6bd671503df51)](https://app.codacy.com/gh/AnimeKaizoku/SaitamaRobot?utm_source=github.com&utm_medium=referral&utm_content=AnimeKaizoku/SaitamaRobot&utm_campaign=Badge_Grade_Settings)  [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/AnimeKaizoku/SaitamaRobot/graphs/commit-activity) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://perso.crans.org/besson/LICENSE.html) [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com) [![Updates channel!](https://img.shields.io/badge/Join%20Channel-!-red)](https://t.me/OnePunchUpdates)
+![Sung Jin-Woo](https://telegra.ph/file/cc951a72b7416a2dedc02.jpg)
+# Sung Jin-Woo 
+[![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)!]
 
 
-A modular Telegram Python bot running on python3 with a sqlalchemy database and an entirely themed persona to make Mai suitable for Anime and Manga group chats. This is a fork of Saitama.
+A modular Telegram Group Management bot made using [Saitama](https://t.me/SaitamaRobot) as base repo.
 
-Can be found on telegram as [Mai Sakurajima](https://t.me/Mai_Sakurajima_Robot).
+Can be found on telegram as [Sung Jin-Woo](https://t.me/SungJinwooRobot).
 
-The Support group can be reached out to at [Mai Support](https://t.me/MaiSakurajimaSupport), where you can ask for help about [Mai Sakurajima](https://t.me/Mai_Sakurajima_Robot), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
+The Support group can be reached out to at [Hunters Associations](https://t.me/HuntersAssociations), where you can ask for help about [Sung Jin-Woo](https://t.me/SungJinwooRobot), discover/request new features, report bugs, and stay in the loop whenever a new update is available. 
 
 ## How to setup/deploy.
 
 ### Read these notes carefully before proceeding 
- - Edit any mentions of @OnePunchSupport to your own support chat
- - Your code must be open source and a link to your fork's repository must be there in the start reply of the bot [See this](https://github.com/AnimeKaizoku/SaitamaRobot/blob/shiken/SaitamaRobot/__main__.py#L25)
- - Lastly, if you are found to run this repo without the code being open sourced or the repository link not mentioned in the bot, we will push a gban for you in our network because of being in violation of the license, you are free to be a dick and not respect the open source code (we do not mind) but we will not be having you around our chats
- - This repo does not come with technical support, so DO NOT come to us asking help about deploy/console errors
+ - Your code must be open source and a link to your fork's repository must be there in the start reply of the bot.
 
 <details>
-  <summary>Steps to deploy on Heroku !! </summary>
+  <summary>Steps to deploy on Heroku !!</summary>
 
 ```
 Fill in all the details, Deploy!
@@ -27,7 +24,7 @@ REMEMBER: Turn on worker dyno (Don't worry It's free :D) & Webhook
 Now send the bot /start, If it doesn't respond go to https://dashboard.heroku.com/apps/(app-name)/settings and remove webhook and port.
 ```
 
-  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://github.com/Raki-12/Mai-Sakurajima.git)
+  [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Pirate-Hunter/Sung-Jinwoo.git)
 
 </details>  
 <details>
@@ -163,11 +160,11 @@ You can use [nssm](https://nssm.cc/usage) to install the bot as service on windo
 Make sure to edit the start and restart bats to your needs. 
 Note: the restart bat requires that User account control be disabled.
 
-For queries or any issues regarding the bot please open an issue ticket or visit us at [One Punch Support](https://t.me/OnePunchSupport)
+
 ## How to setup on Heroku 
 For starters click on this button 
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AnimeKaizoku/SaitamaRobot.git) 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Pirate-Hunter/Sung-Jinwoo.git) 
 
 
 ## Credits
