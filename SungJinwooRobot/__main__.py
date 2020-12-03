@@ -77,7 +77,7 @@ And the following:
 SungJinWoo_IMG = "https://telegra.ph/file/244cdf7757e2c343784cd.jpg"
 
 DONATE_STRING = """Heya, glad to hear you want to donate!
-Click here to donate in [Paypal](https://www.paypal.me/piratehunter12)"""
+Click here to donate in [Paypal](https://www.paypal.me/piratehunter1202)"""
 
 IMPORTED = {}
 MIGRATEABLE = []
