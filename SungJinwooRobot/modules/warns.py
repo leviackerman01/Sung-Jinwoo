@@ -200,7 +200,7 @@ def rmwarn_cmd(update: Update, context: CallbackContext) -> str:
             limit, soft_warn = sql.get_warn_setting(chat.id)
             keyboard = InlineKeyboardMarkup([[
                 InlineKeyboardButton(
-                  "Remove warn", callback_data="rm_wamr({})".format(user_id)
+                  "Remove warn", callback_data="rm_wamr({})".format(user_id))
             ]])
             reply_text = f"This user has {num_warns}/{limit} warns."
             try:
