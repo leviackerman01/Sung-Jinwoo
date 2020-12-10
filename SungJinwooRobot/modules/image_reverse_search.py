@@ -184,10 +184,9 @@ __help__ = f"""
 • /reverse: Does a *reverse image search* of the media which it was replied to.
 
 - - - - - - - - -
-*Report bugs at* @SenkuSupport
 """
 
-__mod_name__ = "Image Search"
+__mod_name__ = "Reverse"
 
 REVERSE_HANDLER = DisableAbleCommandHandler(
     "reverse", reverse, pass_args=True, admin_ok=True
