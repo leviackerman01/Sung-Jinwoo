@@ -35,52 +35,48 @@ def ban(update: Update, context: CallbackContext) -> str:
     if not user_id:
         message.reply_text("I doubt that's a user.")
         return log_message
-
     try:
         member = chat.get_member(user_id)
     except BadRequest as excp:
-        if excp.message == "User not found":
-            message.reply_text("Can't seem to find this person.")
-            return log_message
-        else:
+        if excp.message != "User not found":
             raise
-
+        message.reply_text("Can't seem to find this person.")
+        return log_message
     if user_id == bot.id:
         message.reply_text("Oh yeah, ban myself, noob!")
         return log_message
 
     if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
         if user_id == OWNER_ID:
-            message.reply_text(
-                "Trying to put me against a God level disaster huh?")
-            return log_message
+            message.reply_text("Trying to put me against a God level disaster huh?")
         elif user_id in DEV_USERS:
             message.reply_text("I can't act against our own.")
-            return log_message
         elif user_id in DRAGONS:
             message.reply_text(
-                "Fighting this Dragon here will put civilian lives at risk.")
-            return log_message
+                "Fighting this Dragon here will put civilian lives at risk."
+            )
         elif user_id in DEMONS:
             message.reply_text(
                 "Bring an order from Heroes association to fight a Demon disaster."
             )
-            return log_message
         elif user_id in TIGERS:
             message.reply_text(
                 "Bring an order from Heroes association to fight a Tiger disaster."
             )
-            return log_message
         elif user_id in WOLVES:
             message.reply_text("Wolf abilities make them ban immune!")
-            return log_message
         else:
             message.reply_text("This user has immunity and cannot be banned.")
-            return log_message
-
+        return log_message
+    if message.text.startswith("/s"):
+        silent = True
+        if not can_delete(chat, context.bot.id):
+            return ""
+    else:
+        silent = False
     log = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#BANNED\n"
+        f"#{'S' if silent else ''}BANNED\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
         f"<b>User:</b> {mention_html(member.user.id, html.escape(member.user.first_name))}"
     )
@@ -89,6 +85,13 @@ def ban(update: Update, context: CallbackContext) -> str:
 
     try:
         chat.kick_member(user_id)
+
+        if silent:
+            if message.reply_to_message:
+                message.reply_to_message.delete()
+            message.delete()
+            return log
+
         # bot.send_sticker(chat.id, BAN_STICKER)  # banhammer marie sticker
         reply = (
             f"<code>❕</code><b>Ban Event</b>\n"
@@ -102,12 +105,19 @@ def ban(update: Update, context: CallbackContext) -> str:
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text('Banned!', quote=False)
+            if silent:
+                return log
+            message.reply_text("Banned!", quote=False)
             return log
         else:
             LOGGER.warning(update)
-            LOGGER.exception("ERROR banning user %s in chat %s (%s) due to %s",
-                             user_id, chat.title, chat.id, excp.message)
+            LOGGER.exception(
+                "ERROR banning user %s in chat %s (%s) due to %s",
+                user_id,
+                chat.title,
+                chat.id,
+                excp.message,
+            )
             message.reply_text("Uhm...that didn't work...")
 
     return log_message
@@ -438,7 +448,7 @@ __help__ = """
  • `/punch <userhandle>`*:* Punches a user out of the group, (via handle, or reply)
 """
 
-BAN_HANDLER = CommandHandler("ban", ban)
+BAN_HANDLER = CommandHandler(["ban", "sban"], ban)
 TEMPBAN_HANDLER = CommandHandler(["tban"], temp_ban)
 PUNCH_HANDLER = CommandHandler(("punch", "kick"), punch)
 UNBAN_HANDLER = CommandHandler("unban", unban)
@@ -453,10 +463,9 @@ dispatcher.add_handler(PUNCH_HANDLER)
 dispatcher.add_handler(UNBAN_HANDLER)
 dispatcher.add_handler(ROAR_HANDLER)
 dispatcher.add_handler(PUNCHME_HANDLER)
-dispatcher.add_handler(SBAN_HANDLER)
 
 __mod_name__ = "Bans"
 __handlers__ = [
     BAN_HANDLER, TEMPBAN_HANDLER, PUNCH_HANDLER, UNBAN_HANDLER, ROAR_HANDLER,
-    PUNCHME_HANDLER, SBAN_HANDLER
+    PUNCHME_HANDLER
 ]

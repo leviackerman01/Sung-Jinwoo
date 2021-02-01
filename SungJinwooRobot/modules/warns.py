@@ -171,7 +171,8 @@ def warn_user(update: Update, context: CallbackContext) -> str:
     warner: Optional[User] = update.effective_user
 
     user_id, reason = extract_user_and_text(message, args)
-
+    if message.text.startswith("/d") and message.reply_to_message:
+        message.reply_to_message.delete()
     if user_id:
         if message.reply_to_message and message.reply_to_message.from_user.id == user_id:
             return warn(message.reply_to_message.from_user, chat, reason,
@@ -495,6 +496,7 @@ __help__ = """
 
 *Admins only:*
  • `/warn <userhandle>`*:* warn a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
+ • `/dwarn <userhandle>`*:* warn a user and delete the message. After 3 warns, the user will be banned from the group. Can also be used as a reply.
  • `/resetwarn <userhandle>`*:* reset the warns for a user. Can also be used as a reply.
  • `/rmwarn `*:* now you can remove last warn. No need reset.
  • `/addwarn <keyword> <reply message>`*:* set a warning filter on a certain keyword. If you want your keyword to \
@@ -506,7 +508,7 @@ be a sentence, encompass it with quotes, as such: `/addwarn "very angry" This is
 
 __mod_name__ = "Warnings"
 
-WARN_HANDLER = CommandHandler("warn", warn_user, filters=Filters.group)
+WARN_HANDLER = CommandHandler(["warn", "dwarn"], warn_user, filters=Filters.group)
 RESET_WARN_HANDLER = CommandHandler(["resetwarn", "resetwarns"],
                                     reset_warns,
                                     filters=Filters.group)
